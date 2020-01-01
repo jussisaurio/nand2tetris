@@ -1,0 +1,35 @@
+All basic operations can be derived from binary addition (because negative numbers, etc).
+
+Addition can be done using "elementary school carry the one" method:
+
+00010101
++
+01011100
+=
+01110001
+
+
+What about overflow? Result doesn't fit to 8-bit "word size":
+
+ 10010101
+ +
+ 11011100
+101110001
+
+displays 01110001
+
+
+Building an adder:
+
+1. Half adder - add two bits
+2. Full adder - add three bits
+3. Adder - adds two numbers
+
+
+Half adder chip:
+
+a b sum carry
+0 0 0   0
+0 1 1   0
+1 0 1   0
+1 1 0   1

@@ -1,0 +1,39 @@
+The ALU computes a function on two inputs and outputs the result.
+
+The function f is one out of a family of predefined arithmetic/logical funcs:
+arithmetic: integer addition, multiplication, division...
+logical: and, or, xor...
+
+
+The computer we are building is called Hack. The Hack ALU consists of these parts:
+
+- Two 16-bit inputs
+- Six 1-bit control inputs that compute which function to run. A family of 18 functions are defined.
+- One 16-bit output
+- Also outputs two 1-bit control values (discussed later)
+
+
+Input control bits explained:
+
+In sequential order:
+
+if zx then x = 0
+if nx then x = !x
+if zy then y = 0
+if ny then y = !y
+if f then out = x+y else out = x&y
+if no then out = !out
+
+this computes out to be one of the 18 desired operations
+
+example:
+zx=1, nx=0, zy=1, ny=1, f=1, no=1
+
+out (x,y) = (0,y) -> (0,y) -> (0,0) -> (0, not 0) -> 0 + not 0 = 0000000000000000 + 1111111111111111 -> 1111111111111111 -> not 1111111111111111 -> 0
+
+
+Output control bits (zr "zero", ng "negative") explained:
+
+if out == 0, then zr = 1 else 0
+
+if out < 0, then ng = 1, else 0

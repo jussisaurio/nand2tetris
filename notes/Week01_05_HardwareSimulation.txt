@@ -1,0 +1,16 @@
+Load HDL code into hardware simulator program. The simulator emulates and tests the language.
+
+Simulator options:
+- Interactive (manual)
+- Script-based
+- With/without output and compare files
+
+Note: Nand(a=firstinput, b=secondinput, out=whateverisoutputted) was given, all the other gates have to be implemented based on nand. see Week01_02.
+
+For each chip, the chip architect creates:
+
+- A chip API
+- A test Script
+- a compare file (expected)
+
+Based on these, chip developers can build the chip since they ahve the API and tests.

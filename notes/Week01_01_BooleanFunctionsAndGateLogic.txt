@@ -1,0 +1,45 @@
+Boolean Operations:
+
+AND x ^ y
+OR x v y
+NOT ¬x
+XOR x ⊻ y
+
+Boolean Expressions:
+
+NOT (0 OR (1 AND 1)) = NOT (0 OR (1)) = NOT (1) = 0
+
+1 AND (0 OR (NOT (1))) = 1 AND (0 OR 0) = 1 AND 0 = 0
+
+
+Boolean Functions:
+
+f(x,y,z) = (x AND y) OR (NOT(x) AND z)
+
+Boolean identities:
+
+- Commutative laws:
+(x AND y) = (y AND x)
+(x OR y) = (y OR x)
+
+- Associative laws:
+(x AND (y AND z)) = ((x AND y) AND z)
+(x OR (y OR z)) = ((x OR y) OR z)
+
+- Distributive laws:
+(x AND (y OR z)) = (x AND y) OR (x AND z)
+(x OR (y AND z)) = (x OR y) AND (x OR z)
+
+- De Morgan laws:
+NOT (x AND y) = NOT(x) OR NOT(y)
+NOT (x OR y) = NOT(x) AND NOT(y)
+
+These can be verified with a truth table and demonstrating that the left hand side table is exactly equal to the right hand side.
+
+Boolean Algebra:
+
+NOT (NOT(x) AND NOT(x OR y)) =
+NOT (NOT (x) AND NOT(x) AND NOT(y)) =
+NOT (NOT (x) AND NOT(y)) =
+NOT (NOT (x OR y)) =
+x OR y

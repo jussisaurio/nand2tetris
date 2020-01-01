@@ -1,0 +1,29 @@
+HDL
+
+Example HDL file:
+
+/** Xor gate: out = (a And Not(b)) Or (Not(a) And b) */
+
+CHIP Xor {
+  IN a, b;
+  OUT out;
+
+  PARTS:
+  Not (in=a, out=nota);
+  Not (in=b, out=notb);
+  And (a=a, b=notb, out=aAndNotb);
+  And (a=nota, b=b, out=notaAndb);
+  Or (a=aAndNotb, b=notaAndb, out=out);
+}
+
+# Section above PARTS is interface, below is implementation. Interface is unique, implementation may vary.
+
+# HDL File is a textual description of a gate diagram.
+
+# HDL is declarative / functional :) the description goes into hardware simulator that takes care of the procedural part.
+
+# There are many HDLs, most common are:
+- VHDL
+- Verilog
+
+The HDL in this course is similar in spirit to the "commercial" HDLs, but minimal and simple.

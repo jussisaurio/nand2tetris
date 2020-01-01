@@ -1,0 +1,19 @@
+Gate Logic: implement boolean functions using logic gates
+
+Elementary logic gates (Nand, And, Or, Not...)
+
+Composite logic gates (Adder, etc... based on elementary logic gates)
+
+
+- Example of composite gate: 3-way AND.
+  * feed A and B through an AND gate
+  * feed the result, AB, to another AND gate with C
+  * Associative, so the order of A,B,C doesnt matter
+
+
+Gate Interface = the abstraction. What does the chip do? In this case, compute AND for three values.
+Gate Implementation = how this is actually achieved
+
+Interface is unique, implementations can vary.
+
+Example circuit implementation of AND: two relays in series. OR: two relays in parallel.

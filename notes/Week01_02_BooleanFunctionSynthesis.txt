@@ -1,0 +1,34 @@
+Truth Table to Boolean Expression?
+
+x y z f
+0 0 0 1 - NOT(x) AND NOT(y) AND NOT(z)
+0 0 1 0
+0 1 0 1 - NOT(x) AND y AND NOT(z)
+0 1 1 0
+1 0 0 1 - x AND NOT(y) AND NOT(z)
+1 0 1 0
+1 1 0 0
+1 1 1 0
+
+f(x,y,z)
+= (NOT(x) AND NOT(y) AND NOT(z)) OR (NOT(x) AND y AND NOT(z)) OR (x AND NOT(y) AND NOT(z))
+= NOT(z) AND ( (NOT(x) AND NOT(y)) OR (NOT(x) AND y) OR (x AND NOT(y) )
+= NOT(z) AND NOT(x AND y)
+
+Theorem 1:
+Any Boolean function can be represented using an expression containing only AND, OR and NOT operations!
+
+Theorem 2:
+Any Boolean function can be represented using an expression containing only AND, NOT operations!
+Proof: (x OR y) = NOT (NOT(x) AND NOT(y)) # OR can be computed using AND and NOT
+
+(x NAND y) = NOT(x AND y)
+
+Theorem 3:
+Any Boolean function can be represented using an expression containing only NAND operations!
+
+Proof:
+
+1) NOT (x) = x NAND x
+2 x AND y = NOT (x NAND y) = (x NAND y) NAND (x NAND y)
+

@@ -1,0 +1,13 @@
+Are the gates we've built standard? Yes!
+
+Is the ALU we built standard? No. It is greatly simplified and not usual. It does not implement very complex operations like multiplication and division etc.
+The software section of this course will include a math library in the OS which implements things like * and / etc. This will be completely transparent to the
+high-level programmer.
+
+Is the ALU efficient? Fairly, but for example the 16-bit adder has to go through a half adder and 15 full adders which all have multiple gates.
+So the implementation of that would be an area to optimize, for example.
+
+
+Should I use chips I built myself in these levels, or use chips given by the chip authors? Recommended to use the given chips because it guarantees that
+bugs encountered in higher levels aren't because of erroneously implemented chips by the student. Also, the software-based built in chips have a much more
+efficient implementation, so using the self-built ones would result in a slow computer.

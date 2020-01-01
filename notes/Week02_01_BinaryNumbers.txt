@@ -1,0 +1,9 @@
+Maximum number you can represent with k bits is 2^k - 1.
+
+8 bits can represent 0-255 if unsigned, if signed then -127...127, with a leading sign bit (0 pos, 1 neg)
+
+87 = (1 * 64) + (0 * 32) + (1 * 16) + (0 * 8) + (1 * 4) + (1 * 2) + (1 * 1)
+
+i.e. 01010111 
+(positive sign bit 0 in the beginning. however this is not really used anymore because it's hard to do binary arithmetic on them, and 1000 == -0 ?? etc,
+see how negative numbers are actually represented: Unit 03)

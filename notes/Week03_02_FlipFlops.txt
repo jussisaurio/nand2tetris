@@ -1,0 +1,35 @@
+Remembering state
+
+We are still missing a component that can remember a bit at t-1 so we can use it to compute a new bit at time t.
+
+At the "end of t-1", this component can be in one of two states: "remember 0" or "remember 1"
+
+The component remembers by flipping between these two possible states.
+
+Gates that can flip between two states are called Flip-Flops.
+
+
+CLOCKED DATA FLIP FLOP (DFF)
+
+out[t] = in[t-1]
+
+This component provides all the sequential logic we need in the course: memory, counters etc.
+
+
+In this course, the D Flip FLop is a given primitive.
+In many physical implementations it may be built from actual Nand gates.
+
+
+1-BIT REGISTER (BIT)
+
+Goal: remember an input bit "forever" (until asked to load a new value). So difference to DFF: can store a bit of data for arbitrary amount of time,
+whereas DFF always stores the previous input for one cycle.
+
+if load(t-1) then out(t) = in(t-1) else out(t) = out(t-1) // where load = 1 means pls load, 0 dont load
+
+
+Implemented with a Mux:
+
+DFF(i, o, load) = Mux (a=o, b=i, sel=load, out=out)
+
+even if output is not known at t=0, because load=1, DFF(i, ???, load) = i

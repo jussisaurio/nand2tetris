@@ -1,0 +1,27 @@
+Von Neumann Architecture for Computer Systems:
+
+Input -> [ Memory <-> Cpu (ALU | Control) ] -> Output
+
+Memory:
+
+- Main memory: RAM (inside the computer)
+- Secondary memory: hard disks, memory sticks
+- Volatile / non-volatile (eg RAM is volatile, Disk is not -- i.e. persistence)
+
+RAM:
+
+- Data
+- Instructions
+
+Perspective:
+
+- Physical memory (how memory is actually built)
+- Logical memory (logical organization of memory -- the focus of this course)
+
+The most basic memory element: Register
+
+- 1 bit register from previous unit
+- E.g. 16-bit register can be abstracted from 1-bit registers.
+- w (word width) = 16, 32, 64 bit...
+- 16-bit registers are the focus of this course
+- Register's state: the value currently stored in the register.

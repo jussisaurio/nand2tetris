@@ -1,0 +1,14 @@
+- Clock cycles (what are the inputs at time unit 0? what about outputs? ... what about time unit n?)
+
+- We have to think about state: memory, counters etc
+
+- The end of the clock cycle is the "actual state" of our program at that point in time. We use discrete time steps to ensure that the system state is stable.
+
+
+Combinatorial logic: out[t] = function( in[t] )
+
+Sequential logic: out[t] = function ( in[t-1] )
+
+The output (state) at time t is the result of applying a function to the inputs of time t-1.
+
+Sequential logic: state[t] = applyFn ( state[t-1] )

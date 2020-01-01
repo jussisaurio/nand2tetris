@@ -1,0 +1,40 @@
+Some chips will receive eg. 16 bits for each input and output 16 bits, so in reality 32 wires going in and 16 going out (one per bit),
+but conceptually it's better to think about them (and manipulate them) as two 16-bit inputs and one 16-bit output. These multi-bit i/o's are called buses.
+
+Chip Add16 {
+  IN a[16], b[16]; <-- called 16-bit input buses
+  OUT out[16];
+
+  PARTS:
+  // foo
+}
+
+Chip Add16ThreeWay {
+  IN a[16], b[16], c[16];
+  OUT out[16];
+
+  PARTS:
+  Add16 (a=a, b=b, out=temp);
+  Add16 (a=temp, b=c, out=out);
+}
+
+
+// Take in 4-bit input and AND them all
+
+Chip And4Way {
+  IN a[4];
+  OUT out;
+
+  PARTS:
+  And (a=a[0], b=a[1], out=t01);
+  And (a=t01, b=a[2], out=t012);
+  And (a=t012, b=a[3], out=out);
+}
+
+
+Other syntax:
+IN foo[8], bar[8];
+Add16 (a[0..7]=foo, a[8..15]=bar ...
+
+- overlapping sub-buses are allowed (0..5, 3..7) etc
+- "false" and "true" may also be used as buses of any width
