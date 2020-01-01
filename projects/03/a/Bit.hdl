@@ -14,5 +14,11 @@ CHIP Bit {
     OUT out;
 
     PARTS:
-    // Put your code here:
+    /* on first cycle preout and dffin are not defined. load is set to 1, because otherwise it wouldnt make sense.
+       mux selects 'in' and outputs it as dffin.
+       dff outputs dffin and stores it as preout for the next cycle.
+       on next cycles mux and consequently dff will output 'preout' until load is set back to 1.
+    */
+    Mux (a=preout, b=in, sel=load, out=dffin);
+    DFF (in=dffin, out=out, out=preout); /* DFF is a builtin */
 }

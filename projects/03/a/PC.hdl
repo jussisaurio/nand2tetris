@@ -16,5 +16,24 @@ CHIP PC {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    // if reset set prevout to 0
+    // elif load set prevout to x
+    // elif inc set prevout to prevout+1
+    // else prevout=prevout
+
+    // output muxout (initially zero because some of these cannot be computed at cycle 0)
+    // (in the second cycle prevout is 0, and computation for the rest can start.)
+
+    And16 (a=prevout, out=zero16);
+    Add16 (a=prevout, b[0]=true, out=inc16);
+    Mux16 (a=prevout, b=in, sel=load, out=load16);
+
+    Or (a=reset, b=load, out=resetOrLoad);
+    Or (a=resetOrLoad, b=inc, out=change);
+
+    Mux (a=inc, b=reset, sel=resetOrLoad, out=selector);
+
+    Mux4Way16 (a=prevout, b=inc16, c=load16, d=zero16, sel[1]=resetOrLoad, sel[0]=selector, out=muxout);
+
+    Register(in=muxout, load=change, out=out, out=prevout);
 }

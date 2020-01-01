@@ -30,6 +30,6 @@ if load(t-1) then out(t) = in(t-1) else out(t) = out(t-1) // where load = 1 mean
 
 Implemented with a Mux:
 
-DFF(i, o, load) = Mux (a=o, b=i, sel=load, out=out)
+Bit(i, o, load) = Mux (a=o, b=i, sel=load, out=out)
 
-even if output is not known at t=0, because load=1, DFF(i, ???, load) = i
+even if output is not known at t=0, because load=1, Bit(i, ???, load) = i

@@ -25,3 +25,44 @@ The most basic memory element: Register
 - w (word width) = 16, 32, 64 bit...
 - 16-bit registers are the focus of this course
 - Register's state: the value currently stored in the register.
+
+How to read from register: probe "out" -> out emits the register state
+How to write to register: set in = newValue, set load = 1
+
+
+RAM unit:
+
+- A sequence of 'n' addressable registers, with addresses 0..n-1
+- At a given point in time, only ONE register in the RAM is selected.
+- Inputs:
+  * in
+  * load
+  * out
+  * k (log n bits) -- to select register between 0..n-1
+  * w (word width i.e. number of bits a register holds. in Hack computer w=16)
+
+To read register i:
+  set address = i
+  out emits state of register i
+
+To write in register i:
+  set address = i
+  set load = 1
+  set in = newValue
+
+Chips in the course (16-bit RAM chips):
+
+name    n     k (log n)
+RAM8    8     2
+RAM64   64    6
+RAM512  512   9
+RAM4k   4096  12
+RAM16k  16384 14
+
+
+Why "Random Access Memory"?
+
+- Because no matter the RAM size, every register can be accessed simultaneously
+- All we need is to set the address value (eg. 5000 or 5000000) and we can read the value from it
+
+
