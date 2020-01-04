@@ -1,0 +1,30 @@
+Recap:
+
+- Compute the value of 'comp'
+- Store the result in 'dest'
+- If comp jump 0 is true, jump to execute instruction stored in ROM[A]
+
+Hack programming:
+- Working with registers and memory (Data D, Address A, currently selected Memory register M)
+- Branching
+- Variables
+- Iteration
+- Pointers
+- IO
+
+Typical ops:
+
+// D=10
+@10
+D=A
+
+// D++
+D=D+1
+
+// D=RAM[17]
+@17
+D=M
+
+// RAM[17]=D
+@17
+M=D

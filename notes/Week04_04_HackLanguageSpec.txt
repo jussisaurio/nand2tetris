@@ -1,0 +1,31 @@
+A-INSTRUCTION:
+
+Symbolic syntax:
+
+@val, ex @21
+
+Set Address register to val
+
+val 0 >= <= 32767, or a symbol referring to such a value
+
+
+Binary syntax:
+
+0val, val 15-bit number. ex 0 000000000010101 <- set A register to 21. Leading 0 = A-Instruction
+
+
+
+C-INSTRUCTION:
+
+dest = comp ; jump
+
+Binary: 1 1 1 a c1 c2 c3 c4 c5 c6 d1 d2 d3 j1 j2 j3
+
+first: opcode (0 = A-instruction, 1 = C-instruction)
+2-3: unused, set to 1 by convention
+a-c6: comp bits, sent to ALU!
+d: dest bits (symbols A, D, ... AMD, 2^3=8 combos)
+j: jump bits (8 combos)
+
+
+The resulting binary sequence will conform to the CPU's ALU so that it executes the right instructions on the hardware.

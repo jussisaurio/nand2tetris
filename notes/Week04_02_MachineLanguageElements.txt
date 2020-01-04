@@ -1,0 +1,95 @@
+Machine language
+
+- Spec of the HW/SW interface
+  * Supported operations?
+  * What do they operate on?
+  * How is the program controlled?
+
+- Very often, closely corresponds to the actual HW architecture
+  * I.e. machine instruction will actually be performed on the hardware as written
+  * However, this does not _have_ to necessarily happen
+
+- Cost-performance tradeoff
+  * Silicon area
+  * Time to Complete Instruction
+
+
+
+Elementary features one will find in all machine languages:
+
+- Arithmetic: ADD, SUBTRACT...
+- Logical: AND, OR...
+- Flow control: GOTO x, IF y THEN GOTO z
+
+Differences between machine languages:
+
+- Richness of operation set (division? bulk copy?) // complex ops can be expensive in terms of silicon
+- Data types: word width (bits, bigger is better, one 64bit addition vs 8x8 addition), floats...?
+
+
+Memory hierarchy
+
+- Problem: accessing a memory location is expensive
+  * Need to supply a long address
+  * Getting mem contents into CPU takes time
+
+- Solution: Memory Hierarchy (Von Neumann already figured this out), from small/fast to big/slow:
+  * CPU registers
+  * Cache
+  * Main memory (RAM)
+  * Disk
+
+Registers
+- Almost all CPUs contain a few, easy-to-access, "registers"
+- Their number (how many) and functions are a central part of the machine lang
+
+- Data registers:
+  * Add R1, R2 (add contents of register 1 to register 2)
+
+- Address registers:
+  * Store R1, @A (stores an address in main memory to a register so that particular location can be remembered)
+  * E.g. if R1 is 666 and A is 137, 666 will be written into address 137 in main memory. This write is still slower than writing to a register,
+    but the point is that the address was stored in the register beforehand.
+
+- Addressing modes:
+  * Register
+    - Add R1, R2 // R2 = R2 + R1
+  * Direct
+    - Add R1, M[200] // Mem[200] = Mem[200] + R1
+  * Indirect
+    - Add R1, @A // Mem[A] = Mem[A] + R1
+  * Immediate
+    - Add 73, R1 // R1 = R1 + 73
+
+
+I/O:
+
+- Many types of IO devices: Keyboard, mouse, camera, sensors, printers, screen, sound...
+
+- CPU needs some kind of protocol to talk to these devices
+  * "Software drivers" provide these protocols
+
+- One general method of interaction uses "memory mapping":
+  * Mem[12345] (real memory location) holds the last movement direction of the mouse
+  * Mem[45678] might not be a real memory location, but instead a way to tell the printer which paper to use.
+
+
+Flow control:
+
+- Usually instructions executed in sequence
+
+- Sometimes unconditional jumps are needed for eg looping
+  100 Load R1, 0 // initialize
+  101 Add 1, R1 // add
+  102 ... // do something with current R1 value
+  122 Jump 101 // jump back to adding phase, then do something with the incremented R1 value
+
+- Line 101 can be given a symbolic name like 'loop:
+  loop:  101 ...
+         122 Jump loop
+
+- Conditional jumps:
+        JGT R1, 0, cont   (jgt=jump greater than; skip over next instruction to cont if R1>0)
+        Subtract R1, 0, R1 // R1 = 0 - R1    <-- make number positive if negative
+  cont: ...
+        // Do sth with (guaranteed to be) positive R1 

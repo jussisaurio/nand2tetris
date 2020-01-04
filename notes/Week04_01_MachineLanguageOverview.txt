@@ -1,0 +1,33 @@
+This week concentrates on looking at machine language before the actual computer is put together by combining the CPU and Memory we built.
+
+Universality: same hardware can run many (arbitrarily) different software programs.
+
+Theory: Universal Turing Machine
+Practice: Von Neumann Architecture
+
+
+Input -> [ Memory (contains a program!) <-> Cpu (ALU | Control) ] -> Output
+
+
+Machine Languages:
+
+A. Binary-encoded instructions that are fed to CPU which modifies memory based on them. "Please perform '100100', which can mean eg. addition"
+B. A program counter (see Week 3) is used for sequencing instructions. "Please perform instruction number 159, next 160, then loop back to 140"
+C. Addressing: telling the CPU what to perform the instruction on. "Please perform this operation on memory locations x y, and store it in z".
+
+Compilation:
+
+- Programming in machine language sucks, so a compiler is used to transform a higher-level language into machine language.
+
+Mnemonics:
+
+- Writing machine language instructions as purely bits sucks, so there exist mnemonics like ADD = 0100010, R2=0011 (some register), R3=0010
+  ADD R2 R3 instead of 010001000110010
+- Interpretation 1: the "symbolic form" doesnt actually exist, its just a mnemonic
+- Interpretation 2: Allow humans to write machine language instructions by using this "assembly language" and will have an "Assembler" program
+  that converts those human-readable strings into the bit-form.
+
+  Machine language:  1010 0001 10000001
+  Assembly language: ADD 1, Mem[129] // location 129 is the index in memory
+
+  A "Symbolic Assembler" can translate "fooIndex" -> Mem[129]

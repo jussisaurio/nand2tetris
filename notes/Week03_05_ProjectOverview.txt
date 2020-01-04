@@ -22,6 +22,7 @@ n-Register RAM tips:
 Program Counter tips:
 
 - Can be built from a register, an incrementor, and some previously-built logic gates.
+- Tick-tock! Cycle 1, 1+, 2, 2+...
 
 
 General notes:

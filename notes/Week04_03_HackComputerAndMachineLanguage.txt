@@ -1,0 +1,74 @@
+The Hack Computer is the computer we are building in this course.
+
+                          => data out
+Instruction Memory => CPU              Data Memory
+                          <= data in
+
+
+Hack is a 16-bit-machine (always store and operate on 16-bit values)
+
+- Data memory (RAM): Sequence of 16bit registers: RAM[0], RAM[1] ...
+
+- Instruction Memory (ROM - read only memory): Seq of 16 bit regs: ROM[0]...
+
+- CPU: performs 16-bit instructions
+
+- Instruction bus / data bus / address buses (connect different units of the computer)
+
+
+Hack machine language:
+
+- A instructions (16 bit)
+- C instructions (16 bit)
+
+Hack program = sequence of hack machine language instructions
+
+
+Hack computer: control
+
+1. hack program loaded into ROM
+2. reset button pushed
+3. program starts running
+
+
+Hack computer: three registers
+
+- D register: 16bit value
+- A register: 16bit value (A for address)
+- M represents the 16bit RAM register addressed by A
+
+
+The A-instruction:
+
+- Syntax: @val where val =
+  * non-negative decimal constant
+  * symbol referring to such constant
+
+- Semantics:
+  * Set A register to val
+  * Side effect: RAM[A] becomes the selected RAM register (M)
+
+- Example: @21
+  * Set A register to 21
+  * RAM[21] becomes selected RAM register
+  * How to set RAM[100] to -1:
+    - @100
+    - M = -1
+
+
+The C-instruction:
+
+dest = comp, OR: jump 
+// comp = any ALU operation on one or more registers, or 0/1/-1.
+// dest = where to store output, optional. null, M, D, MD, A, AM, AD, AMD
+// jump = where to jump and when, optional. null, JGT, JEQ, JGE, JLT, JNE, JLE, JMP <-unconditional jump. Always compare to zero! Jumps to A register value.
+
+Examples:
+
+- Set D register to -1: D=-1
+- Set RAM[300] to value of D register minus 1
+  @300 // A=300
+  M=D-1 // RAM[300] = D-1
+- If D-1 == 0 jump to execute the instruction stored in ROM[56]
+  @56 // A=56
+  D-1;JEQ // if (D-1 == 0) goto 56

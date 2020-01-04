@@ -1,0 +1,37 @@
+Hack Output:
+
+ROM => instructions => CPU <=> RAM (contains Screen Memory Map)    <--- peripherals
+
+Physical display is continuously refreshed from the screen memory map.
+To draw on screen, simply manipulate the memory map.
+
+
+Screen memory map in hack
+
+- "Physical" display unit 256 x 512, black and white
+- 8K 16-bit words allocated in map. 8192 * 16 = 256 * 512 = 131072
+- Read/write operations are always 16-bit operations, so screen is divided to 16 logical rows and 32 logical columns
+
+- To set pixel (y, x) on/off:
+  1. word = Screen[32 * y + col / x]  <-- integer division, discard remainder. Screen is implemented using previously built components.
+     word = RAM[16384 + 32*y + col/x] <-- Screen resides in a particular index of RAM
+  2. set the (x % 16)'th bit of word to 0 or 1
+  3. commit word back to RAM
+
+  1 and 3 are done using regular RAM operations
+
+
+
+Hack Input:
+
+Physical display associated with a Keyboard Memory Map
+Keyboard memory map only requires a single 16-bit register.
+
+When key pressed, its scan code appears in the keyboard memory map (scan codes are by convention)
+"No key" is mapped to 0.
+
+To check which key currently pressed:
+  - Probe the contents of the builtin Keyboard chip (i.e. a 16bit register at RAM[24576], in this case)
+  - if 0, no key pressed, if x, consult agreed-upon scan codes
+
+
